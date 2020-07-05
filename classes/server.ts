@@ -35,6 +35,30 @@ export default class Server {
         return this.io;
     }
 
+    // gráficas
+    private escucharSockets_old() {
+        // console.log('Escuchando sockets...');
+
+        // this.io.on('connection', client => {
+        //     console.log('Cliente conectado : ', client.id);
+
+        //     // Conectar cliente
+        //     socket.conectar(client, this.io);
+
+        //     // Configurar usuario
+        //     socket.configUsuario(client, this.io);
+
+        //     // Escuchar mensajes
+        //     socket.mensaje(client, this.io);
+
+        //     // Escuchar desconexión
+        //     socket.desconectar(client, this.io);
+    
+        //     // Escuchar obtención de usuarios
+        //     socket.obtenerUsuarios(client, this.io);
+        // });
+    }
+    // Mapbox
     private escucharSockets() {
         console.log('Escuchando sockets...');
 
@@ -42,10 +66,10 @@ export default class Server {
             console.log('Cliente conectado : ', client.id);
 
             // Conectar cliente
-            socket.conectarCliente(client, this.io);
+            socket.conectar(client, this.io);
 
             // Configurar usuario
-            socket.configUsuario(client, this.io);
+            // socket.configUsuario(client, this.io);
 
             // Escuchar mensajes
             socket.mensaje(client, this.io);
@@ -54,7 +78,10 @@ export default class Server {
             socket.desconectar(client, this.io);
     
             // Escuchar obtención de usuarios
-            socket.obtenerUsuarios(client, this.io);
+            // socket.obtenerUsuarios(client, this.io);
+
+            // Nuevo / Eliminar y Mover marcador
+            socket.mapaSockets( client, this.io );
         });
     }
 
